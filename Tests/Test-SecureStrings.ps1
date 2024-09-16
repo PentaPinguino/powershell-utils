@@ -1,4 +1,4 @@
-Import-Module .\Modules\SecureStrings.psm1
+Import-Module .\Modules\SecureStrings\SecureStrings.psm1
 
 # Generate a plain secure string
 ConvertTo-PlainSecureString "Hello world!"
@@ -16,4 +16,4 @@ Get-SecureContent "test.txt"
 # Clean the test file
 if (Test-Path $TestFile) {
     Remove-Item $TestFile -verbose
- }
+}
