@@ -3,7 +3,7 @@ name: Publish to Powershell Gallery
 on: [workflow_dispatch]
 
 jobs:
-  greet:
+  Publish:
     runs-on: windows-latest
     
     steps:
@@ -13,4 +13,4 @@ jobs:
         PSGALLERY_API_KEY: ${{ secrets.PSGALLERY_API_KEY }}
       run: | 
         echo "Publishing package SecureStrings..."
-        Publish-PSResource -Path .\Modules\SecureStrings\ -ApiKey "$env:SUPER_SECRET" -Verbose
+        Publish-PSResource -Path .\Modules\SecureStrings\ -ApiKey "$env:PSGALLERY_API_KEY" -Verbose
