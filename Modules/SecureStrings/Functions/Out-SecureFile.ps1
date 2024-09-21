@@ -30,7 +30,7 @@ function Out-SecureFile {
         )
         try
         {
-            ConvertTo-PlainSecureString $PlainString | Out-File $FilePath
+            ConvertTo-PlainSecureString $PlainString | Set-Content $FilePath
         }
         catch
         {

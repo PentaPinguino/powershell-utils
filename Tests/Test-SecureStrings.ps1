@@ -8,12 +8,19 @@ ConvertTo-PlainSecureString "Hello world and converted back" | ConvertFrom-Plain
 
 # Generate a plain secure string and save it onto a file
 $TestFile = "test.txt"
-Out-SecureFile "Hello world from a file!" $TestFile
 
-# Read back the file and convert it back to a plain string
-Get-SecureContent "test.txt"
+try
+{
+    Out-SecureFile "Hello world from a file!" $TestFile
 
-# Clean the test file
-if (Test-Path $TestFile) {
-    Remove-Item $TestFile -verbose
+    # Read back the file and convert it back to a plain string
+    Get-SecureContent "test.txt"
 }
+finally
+{
+    # Clean the test file
+    if (Test-Path $TestFile) {
+        Remove-Item $TestFile #-verbose
+    }
+}
+
