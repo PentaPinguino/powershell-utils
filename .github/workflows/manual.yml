@@ -7,11 +7,12 @@ jobs:
     runs-on: windows-latest
     
     steps:
+    - name: Checkout
+      uses: actions/checkout@v4
     - name: Publish
       shell: pwsh
       env:
         PSGALLERY_API_KEY: ${{ secrets.PSGALLERY_API_KEY }}
-      working-directory: .\
       run: | 
         echo "Publishing package SecureStrings..."
         Publish-PSResource -Path .\Modules\SecureStrings\ -ApiKey "$env:PSGALLERY_API_KEY" -Verbose
